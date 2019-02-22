@@ -135,10 +135,21 @@
     <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\CinemaContext.cs" />
+    <Compile Include="Controllers\CinemaController.cs" />
     <Compile Include="DAL\CinemaInitializer.cs" />
+    <Compile Include="Controllers\SessaoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902221947161_InitialCreate.cs" />
+    <Compile Include="Migrations\201902221947161_InitialCreate.Designer.cs">
+      <DependentUpon>201902221947161_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902222028475_test.cs" />
+    <Compile Include="Migrations\201902222028475_test.Designer.cs">
+      <DependentUpon>201902222028475_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Filme.cs" />
     <Compile Include="Models\Sessao.cs" />
@@ -185,6 +196,16 @@
     <Content Include="Views\Filme\Details.cshtml" />
     <Content Include="Views\Filme\Edit.cshtml" />
     <Content Include="Views\Filme\Index.cshtml" />
+    <Content Include="Views\Cinema\Create.cshtml" />
+    <Content Include="Views\Cinema\Delete.cshtml" />
+    <Content Include="Views\Cinema\Details.cshtml" />
+    <Content Include="Views\Cinema\Edit.cshtml" />
+    <Content Include="Views\Cinema\Index.cshtml" />
+    <Content Include="Views\Sessao\Create.cshtml" />
+    <Content Include="Views\Sessao\Delete.cshtml" />
+    <Content Include="Views\Sessao\Details.cshtml" />
+    <Content Include="Views\Sessao\Edit.cshtml" />
+    <Content Include="Views\Sessao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -201,6 +222,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902221947161_InitialCreate.resx">
+      <DependentUpon>201902221947161_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902222028475_test.resx">
+      <DependentUpon>201902222028475_test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
