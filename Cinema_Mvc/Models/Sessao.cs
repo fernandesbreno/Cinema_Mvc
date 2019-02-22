@@ -7,8 +7,15 @@ namespace Cinema_Mvc.Models
 {
     public class Sessao
     {
-        public Cinema Cinema { get; set; }
-        public Filme Filme { get; set; }
+        public int SessaoID { get; set; }
+        public int CinemaID { get; set; }
+        public int FilmeID { get; set; }
         public TimeSpan Horario { get; set; }
+
+        public virtual Cinema Cinema { get; set; }
+        public virtual Filme Filme { get; set; }
+        
+
+        
     }
 }

@@ -7,9 +7,11 @@ namespace Cinema_Mvc.Models
 {
     public class Cinema
     {
+        public int CinemaID { get; set; }
         public string Nome { get; set; }
         public string Endereco { get; set; }
-        public ICollection<Sessao> SessoesFilme { get; set; }
+
+        public virtual ICollection<Sessao> Sessoes { get; set; }
 
     }
 }
