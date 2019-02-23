@@ -35,6 +35,7 @@ namespace Cinema_Mvc.DAL
             return View(cinema);
         }
 
+
         // GET: Cinema/Create
         public ActionResult Create()
         {

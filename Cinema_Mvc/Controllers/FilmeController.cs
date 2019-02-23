@@ -36,6 +36,24 @@ namespace Cinema_Mvc.Controllers
             return View(filme);
         }
 
+        // GET: Filme/Details/5
+        public ActionResult DetailsFilme(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Filme filme = db.Filmes.Find(id);
+            List<Cinema> cinemas = filme.Sessoes.Select(x => x.Cinema)
+                .Distinct()
+                .ToList<Cinema>();
+
+            if (cinemas == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cinemas);
+        }
         // GET: Filme/Create
         public ActionResult Create()
         {

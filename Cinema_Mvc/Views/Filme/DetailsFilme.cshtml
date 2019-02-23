@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Cinema_Mvc.Models.Cinema>
+
+@{
+    ViewBag.Title = "Details Filme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>@Html.DisplayFor(modelItem => Model.First().Sessoes.First().Filme.Nome) </h2>
+<br />
+
+<div>
+
+
+
+    @foreach (var cinema in Model)
+    {<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => cinema.Nome)
+                </th>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    @foreach (var sessao in cinema.Sessoes)
+                    {
+                        <span>@Html.DisplayFor(modelItem => sessao.Horario)</span>
+
+                        if (sessao.SessaoID != cinema.Sessoes.Last().SessaoID)
+                        {
+                            <span>/</span>
+                        }
+
+                    }
+                    
+                </td>
+
+            </tr>
+        </table>
+        <br />
+    }
+
+
+    <p>
+        @Html.ActionLink("Back to Details", "Details", new { id = Model.First().Sessoes.First().FilmeID })
+    </p>
+</div>
