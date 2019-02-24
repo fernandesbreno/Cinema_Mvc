@@ -36,7 +36,7 @@ namespace Cinema_Mvc.Controllers
             return View(filme);
         }
 
-        // GET: Filme/Details/5
+        // GET: Filme/DetailsFilme/5
         public ActionResult DetailsFilme(int? id)
         {
             if (id == null)
@@ -47,6 +47,33 @@ namespace Cinema_Mvc.Controllers
             List<Cinema> cinemas = filme.Sessoes.Select(x => x.Cinema)
                 .Distinct()
                 .ToList<Cinema>();
+
+            var delete = new List<List<int>>();
+
+            for (int i = 0; i < cinemas.Count; i++)
+            {
+                var del = new List<int>();
+                for (int j = 0; j < cinemas.ElementAt(i).Sessoes.Count; j++)
+                {
+                    if (cinemas.ElementAt(i).Sessoes.ElementAt(j).FilmeID != filme.FilmeId)
+                    {
+                        del.Add(j);
+
+                    }
+                }
+                delete.Add(del);
+            }
+
+            for (int i = 0; i < delete.Count; i++)
+            {
+                for (int j = 0; j < delete.ElementAt(i).Count; j++)
+                {
+                    if (delete.ElementAt(i).Count > 0)
+                    {
+                        cinemas.ElementAt(i).Sessoes.Remove(cinemas.ElementAt(i).Sessoes.ElementAt(j));
+                    }
+                }
+            }
 
             if (cinemas == null)
             {

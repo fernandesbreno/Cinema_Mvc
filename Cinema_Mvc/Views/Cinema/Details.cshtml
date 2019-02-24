@@ -30,6 +30,9 @@
     </dl>
 </div>
 <p>
+
+    @Html.ActionLink("Back to List", "Index") |
     @Html.ActionLink("Edit", "Edit", new { id = Model.CinemaID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Filmes disponiveis", "DetailsCinema", new { id = Model.CinemaID })
+</p>
 </p>

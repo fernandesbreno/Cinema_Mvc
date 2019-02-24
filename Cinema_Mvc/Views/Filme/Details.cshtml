@@ -46,7 +46,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Cinemas disponiveis", "DetailsFilme", new { id = Model.FilmeId }) |
+
+    @Html.ActionLink("Back to List", "Index") |
     @Html.ActionLink("Edit", "Edit", new { id = Model.FilmeId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Cinemas disponiveis", "DetailsFilme", new { id = Model.FilmeId }) 
 </p>
