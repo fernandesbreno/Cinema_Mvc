@@ -24,9 +24,9 @@ namespace Cinema_Mvc.Migrations
             new Filme{Nome = "Bohemian Rhapsody", Genero = "Drama", Duracao = 100, Classificacao = 18},
             new Filme{Nome = "Roma", Genero = "Suspense", Duracao = 120, Classificacao = 16},
             new Filme{Nome = "Coco", Genero = "Comedia", Duracao = 140, Classificacao = 10},
-            new Filme{Nome = "Happy Death Day", Genero = "Comedia/Terror", Duracao = 120, Classificacao = 14},
+            new Filme{Nome = "Happy Death Day", Genero = "Comedia Terror", Duracao = 120, Classificacao = 14},
             new Filme{Nome = "Guardians of the Galaxy", Genero = "Ação", Duracao = 130, Classificacao = 10},
-            new Filme{Nome = "Inception", Genero = "Suspense/Terror", Duracao = 200, Classificacao = 18}
+            new Filme{Nome = "Inception", Genero = "Suspense", Duracao = 200, Classificacao = 18}
             };
 
             filmes.ForEach(s => context.Filmes.Add(s));

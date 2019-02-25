@@ -5,21 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Sessões</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<span class="form-inline">
+    @Html.ActionLink("Criar novo", "Create")
+
+    @using (Html.BeginForm())
+    {
+        <span class="pull-right">
+            Filtrar por cinema: @Html.TextBox("SearchString")
+            <input type="submit" value="Buscar" />
+        </span>
+    }
+</span>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cinema.Nome)
+            @Html.ActionLink("Cinema", "Index", new { sortOrder = ViewBag.CinemaSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Filme.Nome)
+            @Html.ActionLink("Filme", "Index", new { sortOrder = ViewBag.FilmeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Horario)
+            @Html.ActionLink("Horario", "Index", new { sortOrder = ViewBag.HorarioSortParm })
         </th>
         <th></th>
     </tr>
@@ -36,9 +44,9 @@
             @Html.DisplayFor(modelItem => item.Horario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SessaoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SessaoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SessaoID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.SessaoID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.SessaoID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.SessaoID })
         </td>
     </tr>
 }

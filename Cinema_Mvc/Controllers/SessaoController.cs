@@ -15,9 +15,46 @@ namespace Cinema_Mvc.DAL
         private CinemaContext db = new CinemaContext();
 
         // GET: Sessao
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
             var sessoes = db.Sessoes.Include(s => s.Cinema).Include(s => s.Filme);
+            
+
+            ViewBag.CinemaSortParm = sortOrder == "cinema" ? "cinema_desc" : "cinema";
+            ViewBag.FilmeSortParm = sortOrder == "filme" ? "filme_desc" : "filme";
+            ViewBag.HorarioSortParm = sortOrder == "horario" ? "horario_desc" : "horario";
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                sessoes = sessoes.Where(s => s.Cinema.Nome.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(sortOrder))
+            {
+                switch (sortOrder)
+                {
+                    case "cinema":
+                        sessoes = sessoes.OrderBy(x => x.Cinema.Nome);
+                        break;
+                    case "cinema_desc":
+                        sessoes = sessoes.OrderByDescending(x => x.Cinema.Nome);
+                        break;
+                    case "filme":
+                        sessoes = sessoes.OrderBy(x => x.Filme.Nome);
+                        break;
+                    case "filme_desc":
+                        sessoes = sessoes.OrderByDescending(x => x.Filme.Nome);
+                        break;
+                    case "horario":
+                        sessoes = sessoes.OrderBy(x => x.Horario);
+                        break;
+                    case "horario_desc":
+                        sessoes = sessoes.OrderByDescending(x => x.Horario);
+                        break;
+
+                }
+            }
+
             return View(sessoes.ToList());
         }
 

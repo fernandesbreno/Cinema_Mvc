@@ -15,9 +15,39 @@ namespace Cinema_Mvc.DAL
         private CinemaContext db = new CinemaContext();
 
         // GET: Cinema
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Cinemas.ToList());
+           
+            var cinemas = from f in db.Cinemas
+                         select f;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cinemas = cinemas.Where(s => s.Nome.Contains(searchString));
+            }
+
+            ViewBag.NomeSortParm = sortOrder == "nome" ? "nome_desc" : "nome";
+            ViewBag.EnderecoSortParm = sortOrder == "endereco" ? "endereco_desc" : "endereco";
+
+            if (!String.IsNullOrEmpty(sortOrder))
+            {
+                switch (sortOrder)
+                {
+                    case "nome":
+                        cinemas = cinemas.OrderBy(x => x.Nome);
+                        break;
+                    case "nome_desc":
+                        cinemas = cinemas.OrderByDescending(x => x.Nome);
+                        break;
+                    case "endereco":
+                        cinemas = cinemas.OrderBy(x => x.Endereco);
+                        break;
+                    case "endereco_desc":
+                        cinemas = cinemas.OrderByDescending(x => x.Endereco);
+                        break;
+                }
+            }
+            return View(cinemas.ToList());
         }
 
         // GET: Cinema/Details/5

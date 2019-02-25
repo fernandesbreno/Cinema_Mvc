@@ -5,18 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Cinemas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<span class="form-inline">
+    @Html.ActionLink("Criar novo", "Create")
+
+    @using (Html.BeginForm())
+    {
+        <span class="pull-right">
+            Filtrar por nome: @Html.TextBox("SearchString")
+            <input type="submit" value="Buscar" />
+        </span>
+    }
+</span>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Endereco)
+            @Html.ActionLink("Endereco", "Index", new { sortOrder = ViewBag.EnderecoSortParm })
         </th>
         <th></th>
     </tr>
@@ -30,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.Endereco)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CinemaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CinemaID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CinemaID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CinemaID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.CinemaID }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.CinemaID })
         </td>
     </tr>
 }

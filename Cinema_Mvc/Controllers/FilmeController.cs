@@ -16,9 +16,54 @@ namespace Cinema_Mvc.Controllers
         private CinemaContext db = new CinemaContext();
 
         // GET: Filme
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Filmes.ToList());
+
+            var filmes = from f in db.Filmes
+                         select f;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                filmes = filmes.Where(s => s.Nome.Contains(searchString));
+            }
+
+            ViewBag.NomeSortParm = sortOrder == "nome" ? "nome_desc" : "nome";
+            ViewBag.GeneroSortParm = sortOrder == "genero" ? "genero_desc" : "genero";
+            ViewBag.DuracaoSortParm = sortOrder == "duracao" ? "duracao_desc" : "duracao";
+            ViewBag.ClassificacaoSortParm = sortOrder == "classificacao" ? "classificacao_desc" : "classificacao";
+
+            if (!String.IsNullOrEmpty(sortOrder))
+            {
+                switch (sortOrder)
+                {
+                    case "nome":
+                        filmes = filmes.OrderBy(x => x.Nome);
+                        break;
+                    case "nome_desc":
+                        filmes = filmes.OrderByDescending(x => x.Nome);
+                        break;
+                    case "genero":
+                        filmes = filmes.OrderBy(x => x.Genero);
+                        break;
+                    case "genero_desc":
+                        filmes = filmes.OrderByDescending(x => x.Genero);
+                        break;
+                    case "duracao":
+                        filmes = filmes.OrderBy(x => x.Duracao);
+                        break;
+                    case "duracao_desc":
+                        filmes = filmes.OrderByDescending(x => x.Duracao);
+                        break;
+                    case "classificacao":
+                        filmes = filmes.OrderBy(x => x.Classificacao);
+                        break;
+                    case "classificacao_desc":
+                        filmes = filmes.OrderByDescending(x => x.Classificacao);
+                        break;
+                }
+            }
+            
+
+            return View(filmes.ToList());
         }
 
         // GET: Filme/Details/5

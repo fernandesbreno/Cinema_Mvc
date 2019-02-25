@@ -149,6 +149,26 @@
     <Compile Include="Migrations\201902222028475_test.Designer.cs">
       <DependentUpon>201902222028475_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902251355038_add-migration validation.cs" />
+    <Compile Include="Migrations\201902251355038_add-migration validation.Designer.cs">
+      <DependentUpon>201902251355038_add-migration validation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251404123_v2.cs" />
+    <Compile Include="Migrations\201902251404123_v2.Designer.cs">
+      <DependentUpon>201902251404123_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251420445_validation2.cs" />
+    <Compile Include="Migrations\201902251420445_validation2.Designer.cs">
+      <DependentUpon>201902251420445_validation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251424011_validation3.cs" />
+    <Compile Include="Migrations\201902251424011_validation3.Designer.cs">
+      <DependentUpon>201902251424011_validation3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902251436572_validtion4.cs" />
+    <Compile Include="Migrations\201902251436572_validtion4.Designer.cs">
+      <DependentUpon>201902251436572_validtion4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\Filme.cs" />
@@ -231,6 +251,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902222028475_test.resx">
       <DependentUpon>201902222028475_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251355038_add-migration validation.resx">
+      <DependentUpon>201902251355038_add-migration validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251404123_v2.resx">
+      <DependentUpon>201902251404123_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251420445_validation2.resx">
+      <DependentUpon>201902251420445_validation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251424011_validation3.resx">
+      <DependentUpon>201902251424011_validation3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902251436572_validtion4.resx">
+      <DependentUpon>201902251436572_validtion4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
